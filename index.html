@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تنسيق حدائق بالرياض | خدمات احترافية</title>
+  <meta name="description" content="تنسيق حدائق بالرياض - شلالات ونوافير، زرع طبيعي وصناعي، مظلات وجلسات، عشب جداري، حجر عشوائي" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1a7a2e;
+      --green-light: #27ae60;
+      --green-glow: #2ecc71;
+      --blue: #1565c0;
+      --blue-light: #1976d2;
+      --gold: #d4a017;
+      --gold-light: #f0c040;
+      --dark: #0d1f0f;
+      --card-bg: #f9fdf9;
+      --text: #1a2b1c;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(160deg, #0d2e10 0%, #1a4a1e 40%, #0a2b12 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 12px 80px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Floating bg blobs */
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::before {
+      width: 400px; height: 400px;
+      background: #2ecc71;
+      top: -100px; left: -100px;
+    }
+    body::after {
+      width: 350px; height: 350px;
+      background: #d4a017;
+      bottom: -80px; right: -80px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 480px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+      animation: slideUp .7s ease both;
+    }
+    @keyframes slideUp {
+      from { opacity:0; transform: translateY(40px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, #0d2e10 0%, #1a5c22 60%, #0f3a14 100%);
+      padding: 36px 24px 28px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        url('https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?w=800&q=60');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13,46,16,0.85) 0%, rgba(10,43,18,0.75) 100%);
+    }
+    .hero-content { position: relative; z-index: 1; }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: .5px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 12px rgba(212,160,23,0.4);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 2px 12px rgba(212,160,23,0.4); }
+      50%      { box-shadow: 0 2px 24px rgba(212,160,23,0.8); }
+    }
+
+    .logo-icon {
+      font-size: 52px;
+      display: block;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 4px 12px rgba(46,204,113,0.5));
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+
+    .hero h1 {
+      color: #fff;
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1.3;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+      margin-bottom: 6px;
+    }
+    .hero h1 span { color: var(--gold-light); }
+
+    .city-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #d4f5d4;
+      font-size: 13px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-top: 10px;
+      backdrop-filter: blur(8px);
+    }
+
+    /* ── OFFER RIBBON ── */
+    .offer-ribbon {
+      background: linear-gradient(90deg, #c62828, #e53935, #c62828);
+      color: #fff;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .3px;
+      position: relative;
+      overflow: hidden;
+    }
+    .offer-ribbon::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%;
+      height: 100%;
+      background: rgba(255,255,255,0.15);
+      transform: skewX(-20deg);
+      animation: shimmer 2.5s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%   { left: -100%; }
+      100% { left: 200%; }
+    }
+
+    /* ── BODY ── */
+    .card-body {
+      background: var(--card-bg);
+      padding: 24px 20px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .sec-title {
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--green);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sec-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green-light), transparent);
+      border-radius: 2px;
+    }
+
+    /* ── SERVICES GRID ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .srv-card {
+      background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+      border: 1px solid #c8e6c9;
+      border-radius: 14px;
+      padding: 14px 10px;
+      text-align: center;
+      transition: transform .2s, box-shadow .2s;
+      cursor: default;
+    }
+    .srv-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(27,122,46,0.18);
+    }
+    .srv-icon { font-size: 28px; display: block; margin-bottom: 6px; }
+    .srv-name { font-size: 12px; font-weight: 700; color: var(--green); line-height: 1.4; }
+
+    /* ── GALLERY ── */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #c8e6c9;
+      transition: transform .3s;
+    }
+    .gallery img:hover { transform: scale(1.05); }
+
+    /* ── FEATURES ── */
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    .feat-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(90deg, #e8f5e9, #f9fdf9);
+      border-radius: 10px;
+      padding: 10px 14px;
+      border-right: 3px solid var(--green-light);
+    }
+    .feat-icon { font-size: 18px; flex-shrink: 0; }
+    .feat-text { font-size: 13px; font-weight: 600; color: var(--text); }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+      border: 1px solid #a5d6a7;
+      border-radius: 16px;
+      padding: 18px 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .contact-label { font-size: 12px; color: #555; margin-bottom: 6px; }
+    .contact-number {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--green);
+      letter-spacing: 2px;
+      direction: ltr;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* ── BUTTONS ── */
+    .btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 10px;
+      border-radius: 14px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0);
+      transition: background .2s;
+    }
+    .btn:hover::after { background: rgba(255,255,255,0.12); }
+    .btn:active { transform: scale(.96); }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #1b5e20, #2e7d32, #388e3c);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(27,94,32,0.45);
+    }
+    .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(27,94,32,0.55); }
+
+    .btn-call {
+      background: linear-gradient(135deg, #0d47a1, #1565c0, #1976d2);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(13,71,161,0.45);
+    }
+    .btn-call:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,71,161,0.55); }
+
+    .btn-icon { font-size: 20px; }
+
+    /* ── FOOTER ── */
+    .card-footer {
+      background: #0d2010;
+      color: #8bc34a;
+      text-align: center;
+      padding: 14px 16px;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+    .card-footer a {
+      color: var(--gold-light);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .card-footer a:hover { text-decoration: underline; }
+
+    /* ── FLOATING SIDE BUTTONS ── */
+    .float-btns {
+      position: fixed;
+      left: 12px;
+      bottom: 90px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 999;
+    }
+    .float-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 22px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      transition: transform .2s, box-shadow .2s;
+      border: 2px solid rgba(255,255,255,0.25);
+      animation: pop .5s ease both;
+    }
+    .float-btn:nth-child(1) { animation-delay: .2s; }
+    .float-btn:nth-child(2) { animation-delay: .4s; }
+    @keyframes pop {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+    .float-btn:hover { transform: scale(1.12); box-shadow: 0 6px 22px rgba(0,0,0,0.45); }
+
+    .float-wa {
+      background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    }
+    .float-call {
+      background: linear-gradient(135deg, #0d47a1, #1565c0);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c8e6c9, transparent);
+      margin: 6px 0 20px;
+    }
+
+    /* scroll hint */
+    .scroll-hint {
+      position: relative;
+      z-index: 1;
+      color: rgba(255,255,255,0.4);
+      font-size: 11px;
+      margin-top: 14px;
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity:.4; }
+      50%      { opacity:1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FLOATING SIDE BUTTONS -->
+  <div class="float-btns">
+    <a href="https://wa.me/966537580642" target="_blank" class="float-btn float-wa" title="واتساب">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <a href="tel:0537580642" class="float-btn float-call" title="اتصال">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    </a>
+  </div>
+
+  <!-- MAIN CARD -->
+  <div class="card">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="badge">🌿 خدمات تنسيق الحدائق</span>
+        <span class="logo-icon">🌳</span>
+        <h1>تنسيق <span>حدائق</span> بالرياض</h1>
+        <p style="color:#c8f0c8; font-size:13px; margin-top:8px; font-weight:600;">
+          شلالات · نوافير · زرع طبيعي وصناعي · مظلات · جلسات
+        </p>
+        <div class="city-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          الرياض — المملكة العربية السعودية
+        </div>
+      </div>
+    </div>
+
+    <!-- OFFER RIBBON -->
+    <div class="offer-ribbon">
+      🔥 عروض خاصة هذا الموسم — تواصل الآن وأحصل على استشارة مجانية!
+    </div>
+
+    <!-- BODY -->
+    <div class="card-body">
+
+      <!-- SERVICES -->
+      <div class="sec-title">🌺 خدماتنا</div>
+      <div class="services-grid">
+        <div class="srv-card">
+          <span class="srv-icon">💧</span>
+          <span class="srv-name">شلالات ونوافير</span>
+        </div>
+        <div class="srv-card">
+          <span class="srv-icon">🌿</span>
+          <span class="srv-name">زرع طبيعي وصناعي</span>
+        </div>
+        <div class="srv-card">
+          <span class="srv-icon">🪴</span>
+          <span class="srv-name">أحواض زراعية</span>
+        </div>
+        <div class="srv-card">
+          <span class="srv-icon">⛺</span>
+          <span class="srv-name">مظلات وجلسات</span>
+        </div>
+        <div class="srv-card">
+          <span class="srv-icon">🌾</span>
+          <span class="srv-name">عشب جداري</span>
+        </div>
+        <div class="srv-card">
+          <span class="srv-icon">🟩</span>
+          <span class="srv-name">طيل طبيعي وصناعي</span>
+        </div>
+        <div class="srv-card">
+          <span class="srv-icon">🪨</span>
+          <span class="srv-name">حجر عشوائي</span>
+        </div>
+        <div class="srv-card">
+          <span class="srv-icon">🏡</span>
+          <span class="srv-name">تصميم الحدائق</span>
+        </div>
+      </div>
+
+      <!-- GALLERY -->
+      <div class="sec-title">📸 أعمالنا</div>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?w=300&q=70" alt="حديقة 1" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&q=70" alt="حديقة 2" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=70" alt="نافورة" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1598335066870-4a37b5bb41b8?w=300&q=70" alt="عشب" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1589923188900-85dae523342b?w=300&q=70" alt="شلال" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=300&q=70" alt="مظلة" loading="lazy" />
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- FEATURES -->
+      <div class="sec-title">✅ لماذا نحن؟</div>
+      <div class="features">
+        <div class="feat-item">
+          <span class="feat-icon">🏆</span>
+          <span class="feat-text">خبرة أكثر من 10 سنوات في تنسيق الحدائق</span>
+        </div>
+        <div class="feat-item">
+          <span class="feat-icon">👷</span>
+          <span class="feat-text">فريق متخصص ومحترف بأعلى جودة</span>
+        </div>
+        <div class="feat-item">
+          <span class="feat-icon">💰</span>
+          <span class="feat-text">أسعار تنافسية وعروض حصرية</span>
+        </div>
+        <div class="feat-item">
+          <span class="feat-icon">🚀</span>
+          <span class="feat-text">تنفيذ سريع والتزام تام بالمواعيد</span>
+        </div>
+        <div class="feat-item">
+          <span class="feat-icon">🌟</span>
+          <span class="feat-text">ضمان على جميع الأعمال المنفذة</span>
+        </div>
+        <div class="feat-item">
+          <span class="feat-icon">📐</span>
+          <span class="feat-text">تصميم مجاني قبل التنفيذ</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- CONTACT -->
+      <div class="contact-box">
+        <div class="contact-label">📞 للتواصل والحجز</div>
+        <span class="contact-number">0537580642</span>
+        <div style="font-size:11px; color:#777; margin-top:4px;">متاح طوال أيام الأسبوع</div>
+      </div>
+
+      <!-- MAIN BUTTONS -->
+      <div class="btns">
+        <a href="https://wa.me/966537580642" target="_blank" class="btn btn-whatsapp">
+          <span class="btn-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </span>
+          واتساب
+        </a>
+        <a href="tel:0537580642" class="btn btn-call">
+          <span class="btn-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </span>
+          اتصال مباشر
+        </a>
+      </div>
+
+    </div><!-- /card-body -->
+
+    <!-- FOOTER -->
+    <div class="card-footer">
+      <div>© 2025 جميع الحقوق محفوظة | تنسيق حدائق الرياض</div>
+      <div style="margin-top:4px;">
+        تم التصميم بواسطة
+        <a href="https://wa.me/201029095046" target="_blank">م. نجوي إبراهيم</a>
+      </div>
+    </div>
+
+  </div><!-- /card -->
+
+  <p class="scroll-hint">▼ مرر للأسفل لمزيد من التفاصيل</p>
+
+</body>
+</html>
